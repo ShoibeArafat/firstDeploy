@@ -1,0 +1,1630 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ATELIER MERIDIAN — Global Apparel Buying House &amp; Garment Sourcing</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            serif: ['Cormorant Garamond', 'Georgia', 'serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            meridian: {
+              bg: '#F8F7F4',
+              surface: '#FFFFFF',
+              ink: '#121820',
+              muted: '#5A6472',
+              navy: '#172334',
+              terracotta: '#B85D3B',
+              terracottaDark: '#9A4A2C',
+              gold: '#C5A059',
+              sage: '#3B6E5C',
+              border: '#E5E2DC',
+            }
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    :root {
+      --bg-canvas: #F8F7F4;
+      --ink-primary: #121820;
+      --accent-terracotta: #B85D3B;
+      --accent-navy: #172334;
+    }
+
+    body {
+      background-color: var(--bg-canvas);
+      color: var(--ink-primary);
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* Subtle editorial paper texture & grid pattern */
+    .editorial-grid {
+      background-size: 40px 40px;
+      background-image: 
+        linear-gradient(to right, rgba(23, 35, 52, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(23, 35, 52, 0.03) 1px, transparent 1px);
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #EFECE6;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #C4BEB3;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #9E978B;
+    }
+
+    /* Pulse animation for global hub nodes */
+    @keyframes hubPulse {
+      0% { transform: scale(0.95); opacity: 0.85; }
+      70% { transform: scale(2.1); opacity: 0; }
+      100% { transform: scale(2.1); opacity: 0; }
+    }
+    .hub-ring {
+      animation: hubPulse 2.6s infinite cubic-bezier(0.24, 0, 0.38, 1);
+      transform-origin: center;
+      transform-box: fill-box;
+    }
+
+    /* Print styling for formal Quotation / Tech Sheet */
+    @media print {
+      body * {
+        visibility: hidden;
+      }
+      #techSheetModal, #techSheetModal * {
+        visibility: visible;
+      }
+      #techSheetModal {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        background: white !important;
+        padding: 0 !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-meridian-terracotta selection:text-white">
+
+  <!-- Top Compliance & Sourcing Ticker -->
+  <div class="bg-meridian-navy text-white text-xs py-2 px-4 border-b border-white/10">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center gap-4">
+        <span class="inline-flex items-center gap-1.5 font-medium text-meridian-gold">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          Q1/Q2 2027 Production Slots Open
+        </span>
+        <span class="hidden sm:inline text-white/40">|</span>
+        <span class="hidden sm:inline text-white/80">FOB / CIF / DDP Export to USA, Canada, Italy, UK &amp; EU</span>
+      </div>
+      <div class="flex items-center gap-4 font-mono text-[11px] text-white/80">
+        <span>AVG PROTO LEAD TIME: <strong class="text-white">12 DAYS</strong></span>
+        <span class="hidden md:inline text-white/30">•</span>
+        <span class="hidden md:inline">AQL 2.5 CERTIFIED QA</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sticky Navigation Header -->
+  <header class="sticky top-0 z-40 bg-meridian-bg/95 backdrop-blur-md border-b border-meridian-border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <!-- Brand Logo -->
+        <a href="#" class="flex items-center gap-3 group">
+          <div class="w-10 h-10 rounded-xl bg-meridian-navy text-white flex items-center justify-center shadow-sm group-hover:bg-meridian-terracotta transition-colors">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M12 2L2 7l10 5 10-5-10-5z" />
+              <path d="M2 17l10 5 10-5" />
+              <path d="M2 12l10 5 10-5" />
+            </svg>
+          </div>
+          <div>
+            <span class="font-serif text-2xl font-bold tracking-tight text-meridian-ink block leading-none">ATELIER MERIDIAN</span>
+            <span class="text-[10px] uppercase tracking-[0.22em] text-meridian-muted font-semibold mt-1 block">International Buying House</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-meridian-muted">
+          <a href="#global-hub" class="hover:text-meridian-ink transition-colors">Global Network</a>
+          <a href="#rfq-builder" class="hover:text-meridian-ink transition-colors">Tech-Pack &amp; RFQ Builder</a>
+          <a href="#order-pipeline" class="hover:text-meridian-ink transition-colors flex items-center gap-1.5">
+            Live Order Pipeline
+            <span id="navPipelineBadge" class="px-2 py-0.5 text-[11px] font-mono font-semibold bg-meridian-terracotta/15 text-meridian-terracotta rounded-full">4</span>
+          </a>
+          <a href="#compliance" class="hover:text-meridian-ink transition-colors">Compliance &amp; QA</a>
+        </nav>
+
+        <!-- Action Buttons -->
+        <div class="flex items-center gap-3">
+          <button onclick="openPipelineDrawer()" class="hidden sm:inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-meridian-border bg-white text-meridian-ink text-sm font-medium hover:border-meridian-ink/40 transition-all shadow-xs">
+            <svg class="w-4 h-4 text-meridian-terracotta" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+            </svg>
+            <span>Track RFQs</span>
+          </button>
+          <a href="#rfq-builder" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-meridian-navy text-white text-sm font-medium hover:bg-meridian-terracotta transition-colors shadow-sm">
+            <span>Submit Tech Pack</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative editorial-grid pt-12 pb-20 lg:pt-20 lg:pb-28 border-b border-meridian-border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left Value Proposition -->
+        <div class="lg:col-span-7 space-y-7">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-meridian-border shadow-2xs text-xs font-medium text-meridian-ink">
+            <span class="w-2 h-2 rounded-full bg-meridian-terracotta"></span>
+            <span>Direct-to-Factory Apparel Sourcing &amp; Production Management</span>
+          </div>
+
+          <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-meridian-ink leading-[1.08] tracking-tight">
+            From Milan &amp; New York Sketches to <span class="italic text-meridian-terracotta">Container-Ready</span> Collections.
+          </h1>
+
+          <p class="text-base sm:text-lg text-meridian-muted max-w-2xl leading-relaxed">
+            Atelier Meridian bridges fashion brands in the <strong class="text-meridian-ink font-medium">USA, Canada, Italy, UK, and Europe</strong> with 48 audited Tier-1 garment manufacturers. Submit your tech pack, fabric GSM specs, and size breakdown for transparent FOB costing within 24 hours.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-4 pt-2">
+            <a href="#rfq-builder" class="inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-2xl bg-meridian-terracotta text-white font-semibold text-sm sm:text-base hover:bg-meridian-terracottaDark transition-all shadow-md hover:shadow-lg">
+              <span>Build Instant Garment Quotation</span>
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </a>
+            <a href="#global-hub" class="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-2xl bg-white border border-meridian-border text-meridian-ink font-semibold text-sm sm:text-base hover:border-meridian-ink/40 transition-all">
+              <span>Explore Export Corridors</span>
+            </a>
+          </div>
+
+          <!-- Key Metrics Strip -->
+          <div class="grid grid-cols-3 gap-4 sm:gap-8 pt-6 border-t border-meridian-border">
+            <div>
+              <div class="font-serif text-3xl sm:text-4xl font-bold text-meridian-ink">48+</div>
+              <div class="text-xs sm:text-sm text-meridian-muted mt-1">LEED &amp; WRAP Vetted Mills</div>
+            </div>
+            <div>
+              <div class="font-serif text-3xl sm:text-4xl font-bold text-meridian-ink">300<span class="text-lg font-sans font-normal text-meridian-muted"> pcs</span></div>
+              <div class="text-xs sm:text-sm text-meridian-muted mt-1">Flexible Capsule MOQ</div>
+            </div>
+            <div>
+              <div class="font-serif text-3xl sm:text-4xl font-bold text-meridian-ink">99.2%</div>
+              <div class="text-xs sm:text-sm text-meridian-muted mt-1">On-Time Vessel Dispatch</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Editorial Spec Card Preview -->
+        <div class="lg:col-span-5">
+          <div class="bg-white rounded-3xl border border-meridian-border p-6 sm:p-8 shadow-xl relative">
+            <div class="flex items-center justify-between pb-4 border-b border-meridian-border">
+              <div>
+                <span class="text-[11px] font-mono uppercase tracking-wider text-meridian-terracotta font-semibold">Live Sample Dossier</span>
+                <h3 class="font-serif text-2xl font-bold text-meridian-ink mt-0.5">FW26 Heavyweight Boxy Hoodie</h3>
+              </div>
+              <span class="px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-semibold">
+                FOB Quoted
+              </span>
+            </div>
+
+            <!-- Technical Garment Blueprint SVG -->
+            <div class="my-5 bg-meridian-bg rounded-2xl p-4 border border-meridian-border/70 flex items-center justify-between gap-4">
+              <svg class="w-28 h-28 text-meridian-navy shrink-0" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1.6">
+                <!-- Technical Flat Sketch of Hoodie -->
+                <path d="M42 22 C42 14, 78 14, 78 22 L84 32 L106 46 L98 64 L84 54 L84 102 L36 102 L36 54 L22 64 L14 46 L36 32 Z" fill="#FFFFFF" />
+                <path d="M44 24 Q60 36 76 24" stroke-dasharray="2 2" />
+                <path d="M46 66 L74 66 L78 94 L42 94 Z" />
+                <line x1="36" y1="96" x2="84" y2="96" />
+                <line x1="54" y1="30" x2="54" y2="44" />
+                <line x1="66" y1="30" x2="66" y2="44" />
+                <!-- Dimension lines -->
+                <line x1="14" y1="110" x2="106" y2="110" stroke="#B85D3B" stroke-width="1" />
+                <line x1="14" y1="107" x2="14" y2="113" stroke="#B85D3B" stroke-width="1" />
+                <line x1="106" y1="107" x2="106" y2="113" stroke="#B85D3B" stroke-width="1" />
+              </svg>
+              <div class="space-y-2 text-xs w-full">
+                <div class="flex justify-between py-1 border-b border-meridian-border">
+                  <span class="text-meridian-muted">Buyer Destination</span>
+                  <span class="font-semibold text-meridian-ink">New York, USA</span>
+                </div>
+                <div class="flex justify-between py-1 border-b border-meridian-border">
+                  <span class="text-meridian-muted">Fabric Spec</span>
+                  <span class="font-mono font-medium text-meridian-ink">480 GSM Organic Loopback</span>
+                </div>
+                <div class="flex justify-between py-1 border-b border-meridian-border">
+                  <span class="text-meridian-muted">Wash / Finish</span>
+                  <span class="font-medium text-meridian-ink">Pigment Enzyme Wash</span>
+                </div>
+                <div class="flex justify-between py-1">
+                  <span class="text-meridian-muted">Target FOB (2,500 pcs)</span>
+                  <span class="font-mono font-bold text-meridian-terracotta">$14.80 / pc</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between text-xs text-meridian-muted">
+              <span>Includes custom jacquard neck label &amp; YKK trims</span>
+              <a href="#rfq-builder" class="font-semibold text-meridian-navy hover:text-meridian-terracotta underline underline-offset-4">Customize Yours &rarr;</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: Interactive Global Client Hub & Export Corridors -->
+  <section id="global-hub" class="py-20 bg-white border-b border-meridian-border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+        <div>
+          <span class="text-xs font-mono uppercase tracking-[0.2em] text-meridian-terracotta font-semibold">Global Trade Corridors</span>
+          <h2 class="font-serif text-3xl sm:text-4xl font-bold text-meridian-ink mt-2">Active Sourcing Hubs Across North America &amp; Europe</h2>
+        </div>
+        <p class="text-sm text-meridian-muted max-w-md">
+          Select a destination region below to inspect duty-free trade advantages, transit lead times, and top-exported garment categories.
+        </p>
+      </div>
+
+      <!-- Region Selector Tabs -->
+      <div class="flex flex-wrap gap-2.5 mb-8" id="regionTabs">
+        <button data-region="usa" class="region-tab active px-5 py-2.5 rounded-xl text-sm font-semibold transition-all bg-meridian-navy text-white shadow-xs">
+          🇺🇸 United States (NYC / LA)
+        </button>
+        <button data-region="canada" class="region-tab px-5 py-2.5 rounded-xl text-sm font-semibold transition-all bg-meridian-bg text-meridian-ink border border-meridian-border hover:border-meridian-ink/40">
+          🇨🇦 Canada (Toronto / Montreal)
+        </button>
+        <button data-region="italy" class="region-tab px-5 py-2.5 rounded-xl text-sm font-semibold transition-all bg-meridian-bg text-meridian-ink border border-meridian-border hover:border-meridian-ink/40">
+          🇮🇹 Italy (Milan / Florence)
+        </button>
+        <button data-region="uk" class="region-tab px-5 py-2.5 rounded-xl text-sm font-semibold transition-all bg-meridian-bg text-meridian-ink border border-meridian-border hover:border-meridian-ink/40">
+          🇬🇧 United Kingdom (London)
+        </button>
+        <button data-region="eu" class="region-tab px-5 py-2.5 rounded-xl text-sm font-semibold transition-all bg-meridian-bg text-meridian-ink border border-meridian-border hover:border-meridian-ink/40">
+          🇩🇪 Germany &amp; Nordics
+        </button>
+      </div>
+
+      <!-- Interactive Map + Regional Intelligence Panel -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+        <!-- Stylized Vector Trade Map -->
+        <div class="lg:col-span-7 bg-meridian-navy rounded-3xl p-6 sm:p-8 text-white relative overflow-hidden flex flex-col justify-between min-h-[360px]">
+          <div class="flex items-center justify-between z-10">
+            <div>
+              <span class="text-[11px] font-mono uppercase tracking-widest text-meridian-gold">Supply Chain Telemetry</span>
+              <h3 class="font-serif text-2xl font-semibold mt-0.5">Dhaka &amp; Chittagong Export Nexus</h3>
+            </div>
+            <span class="px-3 py-1 rounded-full bg-white/10 text-xs font-mono text-emerald-300 border border-white/10">
+              ● 14 Vessels Active
+            </span>
+          </div>
+
+          <!-- Clean Stylized World Corridor SVG -->
+          <svg viewBox="0 0 800 340" class="w-full h-auto my-4 select-none">
+            <!-- Subtle Latitude/Longitude Lines -->
+            <g stroke="rgba(255,255,255,0.07)" stroke-width="1">
+              <line x1="0" y1="85" x2="800" y2="85" />
+              <line x1="0" y1="170" x2="800" y2="170" />
+              <line x1="0" y1="255" x2="800" y2="255" />
+              <line x1="200" y1="0" x2="200" y2="340" />
+              <line x1="400" y1="0" x2="400" y2="340" />
+              <line x1="600" y1="0" x2="600" y2="340" />
+            </g>
+
+            <!-- Simplified Continents Silhouette -->
+            <g fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.16)" stroke-width="1">
+              <!-- North America -->
+              <path d="M75,65 L195,55 L245,95 L220,155 L175,180 L145,170 L110,135 Z" />
+              <!-- South America -->
+              <path d="M210,205 L265,220 L250,305 L215,315 L195,255 Z" />
+              <!-- Europe -->
+              <path d="M365,65 L455,55 L475,115 L425,135 L370,120 Z" />
+              <!-- Africa -->
+              <path d="M375,145 L455,145 L475,225 L430,285 L395,245 Z" />
+              <!-- Asia -->
+              <path d="M480,65 L685,60 L710,155 L615,195 L545,175 L490,130 Z" />
+              <!-- Australia -->
+              <path d="M625,235 L705,235 L710,290 L635,295 Z" />
+            </g>
+
+            <!-- Shipping Arcs from South Asia Hub (575, 165) to Destination Hubs -->
+            <g fill="none" stroke-linecap="round">
+              <!-- To USA (185, 125) -->
+              <path id="arc-usa" d="M575,165 Q380,45 185,125" stroke="#B85D3B" stroke-width="2.5" stroke-dasharray="6 4" />
+              <!-- To Canada (175, 95) -->
+              <path id="arc-canada" d="M575,165 Q375,20 175,95" stroke="#C5A059" stroke-width="1.8" stroke-dasharray="4 4" opacity="0.6" />
+              <!-- To Italy (418, 112) -->
+              <path id="arc-italy" d="M575,165 Q495,105 418,112" stroke="#C5A059" stroke-width="1.8" stroke-dasharray="4 4" opacity="0.6" />
+              <!-- To UK (385, 95) -->
+              <path id="arc-uk" d="M575,165 Q480,85 385,95" stroke="#C5A059" stroke-width="1.8" stroke-dasharray="4 4" opacity="0.6" />
+              <!-- To EU/Germany (422, 92) -->
+              <path id="arc-eu" d="M575,165 Q495,82 422,92" stroke="#C5A059" stroke-width="1.8" stroke-dasharray="4 4" opacity="0.6" />
+            </g>
+
+            <!-- Origin Hub: South Asia Sourcing HQ -->
+            <g transform="translate(575, 165)">
+              <circle r="12" fill="#B85D3B" class="hub-ring" />
+              <circle r="5" fill="#FFFFFF" stroke="#B85D3B" stroke-width="2.5" />
+              <text x="12" y="4" fill="#FFFFFF" font-size="11" font-family="Inter, sans-serif" font-weight="600">Sourcing HQ &amp; Mills</text>
+            </g>
+
+            <!-- Destination Nodes -->
+            <g class="cursor-pointer" onclick="selectRegion('usa')">
+              <circle cx="185" cy="125" r="6" fill="#B85D3B" stroke="#FFFFFF" stroke-width="2" />
+              <text x="122" y="143" fill="#FFFFFF" font-size="11" font-weight="600">New York / LA</text>
+            </g>
+            <g class="cursor-pointer" onclick="selectRegion('canada')">
+              <circle cx="175" cy="95" r="5" fill="#C5A059" stroke="#FFFFFF" stroke-width="1.5" />
+              <text x="122" y="83" fill="#E2E8F0" font-size="10">Toronto / MTL</text>
+            </g>
+            <g class="cursor-pointer" onclick="selectRegion('italy')">
+              <circle cx="418" cy="112" r="5.5" fill="#C5A059" stroke="#FFFFFF" stroke-width="1.5" />
+              <text x="428" y="122" fill="#E2E8F0" font-size="10">Milan</text>
+            </g>
+            <g class="cursor-pointer" onclick="selectRegion('uk')">
+              <circle cx="385" cy="95" r="5" fill="#C5A059" stroke="#FFFFFF" stroke-width="1.5" />
+              <text x="342" y="88" fill="#E2E8F0" font-size="10">London</text>
+            </g>
+            <g class="cursor-pointer" onclick="selectRegion('eu')">
+              <circle cx="422" cy="92" r="5" fill="#C5A059" stroke="#FFFFFF" stroke-width="1.5" />
+              <text x="432" y="88" fill="#E2E8F0" font-size="10">Berlin / Stockholm</text>
+            </g>
+          </svg>
+
+          <div class="flex flex-wrap items-center justify-between gap-4 text-xs text-white/70 border-t border-white/10 pt-4">
+            <span>Incoterms Supported: <strong class="text-white">FOB, CIF, CFR, DDP (Door-to-Warehouse)</strong></span>
+            <span>Air Freight Sample Express: <strong class="text-meridian-gold">3–5 Business Days</strong></span>
+          </div>
+        </div>
+
+        <!-- Dynamic Region Details Card -->
+        <div id="regionDetailCard" class="lg:col-span-5 bg-meridian-bg rounded-3xl border border-meridian-border p-6 sm:p-8 flex flex-col justify-between">
+          <!-- Populated via JS -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Interactive Garment Quotation & Tech-Pack Builder -->
+  <section id="rfq-builder" class="py-20 editorial-grid border-b border-meridian-border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header + Live Currency Switcher -->
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10">
+        <div>
+          <span class="text-xs font-mono uppercase tracking-[0.2em] text-meridian-terracotta font-semibold">Interactive Costing Engine</span>
+          <h2 class="font-serif text-3xl sm:text-4xl font-bold text-meridian-ink mt-2">Garment Quotation &amp; Tech-Pack Builder</h2>
+          <p class="text-sm sm:text-base text-meridian-muted mt-2 max-w-2xl">
+            Configure your style specifications, fabric GSM, finishing washes, custom trims, and size matrix below. Our costing algorithm calculates real-time estimated FOB pricing and volume tier discounts.
+          </p>
+        </div>
+
+        <!-- Currency Selector -->
+        <div class="bg-white p-2 rounded-2xl border border-meridian-border inline-flex items-center gap-2 self-start lg:self-end shadow-2xs">
+          <span class="text-xs font-semibold text-meridian-muted pl-2">Quote Currency:</span>
+          <div class="flex gap-1" id="currencyButtons">
+            <button type="button" data-curr="USD" class="curr-btn px-3 py-1.5 rounded-xl text-xs font-mono font-bold bg-meridian-navy text-white">USD ($)</button>
+            <button type="button" data-curr="EUR" class="curr-btn px-3 py-1.5 rounded-xl text-xs font-mono font-bold text-meridian-muted hover:text-meridian-ink">EUR (€)</button>
+            <button type="button" data-curr="CAD" class="curr-btn px-3 py-1.5 rounded-xl text-xs font-mono font-bold text-meridian-muted hover:text-meridian-ink">CAD ($)</button>
+            <button type="button" data-curr="GBP" class="curr-btn px-3 py-1.5 rounded-xl text-xs font-mono font-bold text-meridian-muted hover:text-meridian-ink">GBP (£)</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Builder Grid: Form on Left (7 cols), Sticky Live Costing Sheet on Right (5 cols) -->
+      <form id="rfqForm" class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- LEFT COLUMN: Multi-Card Tech-Pack Inputs -->
+        <div class="lg:col-span-7 space-y-6">
+
+          <!-- Step 1: Buyer & Brand Origin -->
+          <div class="bg-white rounded-3xl border border-meridian-border p-6 sm:p-8 shadow-2xs">
+            <div class="flex items-center gap-3 mb-6">
+              <span class="w-8 h-8 rounded-full bg-meridian-navy text-white font-mono text-xs font-bold flex items-center justify-center">01</span>
+              <div>
+                <h3 class="font-serif text-2xl font-bold text-meridian-ink">Buyer &amp; Destination Profile</h3>
+                <p class="text-xs text-meridian-muted">Used to determine regional compliance standards &amp; port logistics</p>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-semibold uppercase tracking-wider text-meridian-muted mb-1.5">Brand / Company Name *</label>
+                <input type="text" id="buyerCompany" required placeholder="e.g., Studio Milano SRL" class="w-full px-4 py-3 rounded-xl bg-meridian-bg border border-meridian-border text-sm text-meridian-ink focus:outline-none focus:border-meridian-terracotta focus:bg-white transition-colors" />
+              </div>
+              <div>
+                <label class="block text-xs font-semibold uppercase tracking-wider text-meridian-muted mb-1.5">Destination Country *</label>
+                <select id="buyerCountry" class="w-full px-4 py-3 rounded-xl bg-meridian-bg border border-meridian-border text-sm text-meridian-ink focus:outline-none focus:border-meridian-terracotta focus:bg-white transition-colors">
+                  <option value="USA">United States (Port of NY/NJ or LA)</option>
+                  <option value="Canada">Canada (Port of Montreal or Vancouver)</option>
+                  <option value="Italy">Italy (Port of Genoa / Milan Hub)</option>
+                  <option value="United Kingdom">United Kingdom (Felixstowe / London)</option>
+                  <option value="Germany">Germany (Port of Hamburg)</option>
+                  <option value="France">France (Le Havre)</option>
+                  <option value="Australia">Australia (Melbourne / Sydney)</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-xs font-semibold uppercase tracking-wider text-meridian-muted mb-1.5">Merchandiser / Buyer Email *</label>
+                <input type="email" id="buyerEmail" required placeholder="sourcing@yourbrand.com" class="w-full px-4 py-3 rounded-xl bg-meridian-bg border border-meridian-border text-sm text-meridian-ink focus:outline-none focus:border-meridian-terracotta focus:bg-white transition-colors" />
+              </div>
+              <div>
+                <label class="block text-xs font-semibold uppercase tracking-wider text-meridian-muted mb-1.5">Target Delivery Window</label>
+                <select id="deliverySeason" class="w-full px-4 py-3 rounded-xl bg-meridian-bg border border-meridian-border text-sm text-meridian-ink focus:outline-none focus:border-meridian-terracotta focus:bg-white transition-colors">
+                  <option value="SS27 (Feb – Mar 2027)">SS27 Drop 1 (Feb – Mar 2027)</option>
+                  <option value="High Summer 2027">High Summer 2027 (May 2027)</option>
+                  <option value="FW27 (Aug – Sep 2027)">FW27 Mainline (Aug – Sep 2027)</option>
+                  <option value="Holiday / Resort 2027">Holiday / Resort (Nov 2027)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 2: Garment Category, Style & Silhouette -->
+          <div class="bg-white rounded-3xl border border-meridian-border p-6 sm:p-8 shadow-2xs">
+            <div class="flex items-center gap-3 mb-6">
+              <span class="w-8 h-8 rounded-full bg-meridian-navy text-white font-mono text-xs font-bold flex items-center justify-center">02</span>
+              <div>
+                <h3 class="font-serif text-2xl font-bold text-meridian-ink">Garment Category &amp; Construction</h3>
+                <p class="text-xs text-meridian-muted">Select base garment architecture to calibrate base CM (Cut &amp; Make) rates</p>
+              </div>
+            </div>
+
+            <!-- Category Visual Cards -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-6" id="categorySelector">
+              <button type="button" data-cat="knitwear" data-base="9.50" class="cat-card active text-left p-3.5 rounded-2xl border-2 border-meridian-terracotta bg-meridian-terracotta/5 transition-all">
+                <div class="font-semibold text-sm text-meridian-ink">Heavy Knitwear</div>
+                <div class="text-[11px] text-meridian-muted mt-0.5">Hoodies, Fleece, Tees</div>
+                <div class="font-mono text-[11px] text-meridian-terracotta font-semibold mt-1.5">Base ~$9.50</div>
+              </button>
+              <button type="button" data-cat="woven_tops" data-base="11.20" class="cat-card text-left p-3.5 rounded-2xl border border-meridian-border bg-meridian-bg hover:border-meridian-ink/40 transition-all">
+                <div class="font-semibold text-sm text-meridian-ink">Woven Shirts</div>
+                <div class="text-[11px] text-meridian-muted mt-0.5">Oxford, Linen, Flannel</div>
+                <div class="font-mono text-[11px] text-meridian-muted font-semibold mt-1.5">Base ~$11.20</div>
+              </button>
+              <button type="button" data-cat="denim" data-base="14.80" class="cat-card text-left p-3.5 rounded-2xl border border-meridian-border bg-meridian-bg hover:border-meridian-ink/40 transition-all">
+                <div class="font-semibold text-sm text-meridian-ink">Denim &amp; Chinos</div>
+                <div class="text-[11px] text-meridian-muted mt-0.5">5-Pocket, Cargo, Twill</div>
+                <div class="font-mono text-[11px] text-meridian-muted font-semibold mt-1.5">Base ~$14.80</div>
+              </button>
+              <button type="button" data-cat="outerwear" data-base="24.50" class="cat-card text-left p-3.5 rounded-2xl border border-meridian-border bg-meridian-bg hover:border-meridian-ink/40 transition-all">
+                <div class="font-semibold text-sm text-meridian-ink">Outerwear</div>
+                <div class="text-[11px] text-meridian-muted mt-0.5">Trench, Puffer, Work Jacket</div>
+                <div class="font-mono text-[11px] text-meridian-muted font-semibold mt-1.5">Base ~$24.50</div>
+              </button>
+              <button type="button" data-cat="tailoring" data-base="28.00" class="cat-card text-left p-3.5 rounded-2xl border border-meridian-border bg-meridian-bg hover:border-meridian-ink/40 transition-all">
+                <div class="font-semibold text-sm text-meridian-ink">Tailored Suiting</div>
+                <div class="text-[11px] text-meridian-muted mt-0.5">Unstructured Blazers, Trousers</div>
+                <div class="font-mono text-[11px] text-meridian-muted font-semibold mt-1.5">Base ~$28.00</div>
+              </button>
+              <button type="button" data-cat="activewear" data-base="10.40" class="cat-card text-left p-3.5 rounded-2xl border border-meridian-border bg-meridian-bg hover:border-meridian-ink/40 transition-all">
+                <div class="font-semibold text-sm text-meridian-ink">Technical Active</div>
+                <div class="text-[11px] text-meridian-muted mt-0.5">Seamless, Nylon-Spandex</div>
+                <div class="font-mono text-[11px] text-meridian-muted font-semibold mt-1.5">Base ~$10.40</div>
+              </button>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div class="sm:col-span-2">
+                <label class="block text-xs font-semibold uppercase tracking-wider text-meridian-muted mb-1.5">Style Name / Reference Code *</label>
+                <input type="text" id="styleName" required value="AM-204 Drop-Shoulder Loopback Hoodie" class="w-full px-4 py-3 rounded-xl bg-meridian-bg border border-meridian-border text-sm text-meridian-ink focus:outline-none focus:border-meridian-terracotta focus:bg-white transition-colors" />
+              </div>
+              <div>
+                <label class="block text-xs font-semibold uppercase tracking-wider text-meridian-muted mb-1.5">Silhouette &amp; Fit</label>
+                <select id="garmentFit" class="w-full px-4 py-3 rounded-xl bg-meridian-bg border border-meridian-border text-sm text-meridian-ink focus:outline-none focus:border-meridian-terracotta focus:bg-white transition-colors">
+                  <option value="Boxy / Oversized">Boxy / Oversized</option>
+                  <option value="Contemporary Regular">Contemporary Regular</option>
+                  <option value="Relaxed Straight">Relaxed Straight</option>
+                  <option value="Tailored Slim">Tailored Slim</option>
+                  <option value="Cropped Drop-Shoulder">Cropped Drop-Shoulder</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 3: Fabric Composition, Weight (GSM) & Finishing -->
+          <div class="bg-white rounded-3xl border border-meridian-border p-6 sm:p-8 shadow-2xs">
+            <div class="flex items-center gap-3 mb-6">
+              <span class="w-8 h-8 rounded-full bg-meridian-navy text-white font-mono text-xs font-bold flex items-center justify-center">03</span>
+              <div>
+                <h3 class="font-serif text-2xl font-bold text-meridian-ink">Fabric Mill Specs &amp; Finishing</h3>
+                <p class="text-xs text-meridian-muted">Specify yarn composition, fabric density (GSM), and wet-processing treatments</p>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
+              <div>
+                <label class="block text-xs font-semibold uppercase tracking-wider text-meridian-muted mb-1.5">Primary Fabric Composition</label>
+                <select id="fabricType" class="w-full px-4 py-3 rounded-xl bg-meridian-bg border border-meridian-border text-sm text-meridian-ink focus:outline-none focus:border-meridian-terracotta focus:bg-white transition-colors">
+                  <option value="100% Combed Ring-Spun Cotton" data-mult="1.0">100% Combed Ring-Spun Cotton (Standard)</option>
+                  <option value="100% GOTS Certified Organic Cotton" data-mult="1.14">100% GOTS Certified Organic Cotton (+14%)</option>
+                  <option value="55% European Linen / 45% Cotton" data-mult="1.28">55% European Linen / 45% Cotton (+28%)</option>
+                  <option value="100% Japanese Selvedge Cotton Twill" data-mult="1.35">100% Selvedge Cotton Twill / Denim (+35%)</option>
+                  <option value="78% Recycled Nylon / 22% Elastane" data-mult="1.22">78% Recycled Nylon / 22% Elastane (+22%)</option>
+                  <option value="70% Merino Wool / 30% Recycled Poly" data-mult="1.45">70% Merino Wool / 30% Recycled Poly (+45%)</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold uppercase tracking-wider text-meridian-muted mb-1.5">Dyeing &amp; Wash Treatment</label>
+                <select id="fabricFinish" class="w-full px-4 py-3 rounded-xl bg-meridian-bg border border-meridian-border text-sm text-meridian-ink focus:outline-none focus:border-meridian-terracotta focus:bg-white transition-colors">
+                  <option value="Reactive Piece Dyed" data-addon="0.00">Reactive Piece Dyed (Included)</option>
+                  <option value="Silicon Bio-Enzyme Soft Wash" data-addon="0.65">Silicon Bio-Enzyme Soft Wash (+$0.65/pc)</option>
+                  <option value="Vintage Pigment Garment Dye" data-addon="1.35">Vintage Pigment Garment Dye (+$1.35/pc)</option>
+                  <option value="Heavy Stone & Acid Wash" data-addon="1.85">Heavy Stone &amp; Acid Wash (+$1.85/pc)</option>
+                  <option value="PFC-Free DWR Water Repellent" data-addon="1.50">PFC-Free DWR Water Repellent (+$1.50/pc)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Fabric Weight GSM Slider -->
+            <div class="bg-meridian-bg rounded-2xl p-4 border border-meridian-border">
+              <div class="flex items-center justify-between mb-2">
+                <label for="fabricGsm" class="text-xs font-semibold uppercase tracking-wider text-meridian-muted">Fabric Weight Density (GSM)</label>
+                <span class="font-mono text-sm font-bold text-meridian-navy bg-white px-3 py-1 rounded-lg border border-meridian-border">
+                  <span id="gsmDisplay">420</span> GSM
+                </span>
+              </div>
+              <input type="range" id="fabricGsm" min="140" max="600" step="10" value="420" class="w-full accent-meridian-terracotta cursor-pointer" />
+              <div class="flex justify-between text-[11px] text-meridian-muted mt-1 font-mono">
+                <span>140 GSM (Lightweight Jersey)</span>
+                <span>320 GSM (Midweight)</span>
+                <span>600 GSM (Ultra-Heavy Fleece)</span>
+              </div>
+            </div>
+
+            <!-- Colorways Input -->
+            <div class="mt-4">
+              <label class="block text-xs font-semibold uppercase tracking-wider text-meridian-muted mb-1.5">Pantone TCX Colorways (Comma Separated)</label>
+              <input type="text" id="colorways" value="Pantone 19-4005 TCX (Stretch Limo), Pantone 12-0712 TCX (Alabaster), Pantone 18-1345 TCX (Cinnamon Stick)" class="w-full px-4 py-3 rounded-xl bg-meridian-bg border border-meridian-border text-sm text-meridian-ink focus:outline-none focus:border-meridian-terracotta focus:bg-white transition-colors" />
+            </div>
+          </div>
+
+          <!-- Step 4: Interactive Size Ratio & Quantity Matrix -->
+          <div class="bg-white rounded-3xl border border-meridian-border p-6 sm:p-8 shadow-2xs">
+            <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
+              <div class="flex items-center gap-3">
+                <span class="w-8 h-8 rounded-full bg-meridian-navy text-white font-mono text-xs font-bold flex items-center justify-center">04</span>
+                <div>
+                  <h3 class="font-serif text-2xl font-bold text-meridian-ink">Size Breakdown Matrix</h3>
+                  <p class="text-xs text-meridian-muted">Enter quantities per size (Volume discounts trigger at 1,000 / 3,000 / 5,000+ pcs)</p>
+                </div>
+              </div>
+              <!-- Quick Ratio Presets -->
+              <div class="flex items-center gap-1.5">
+                <button type="button" onclick="applySizePreset(600)" class="px-2.5 py-1.5 rounded-lg bg-meridian-bg border border-meridian-border text-xs font-mono font-medium hover:border-meridian-ink transition-colors">600 pcs</button>
+                <button type="button" onclick="applySizePreset(1500)" class="px-2.5 py-1.5 rounded-lg bg-meridian-bg border border-meridian-border text-xs font-mono font-medium hover:border-meridian-ink transition-colors">1,500 pcs</button>
+                <button type="button" onclick="applySizePreset(5000)" class="px-2.5 py-1.5 rounded-lg bg-meridian-bg border border-meridian-border text-xs font-mono font-medium hover:border-meridian-ink transition-colors">5,000 pcs</button>
+              </div>
+            </div>
+
+            <div class="overflow-x-auto">
+              <table class="w-full text-left border-collapse">
+                <thead>
+                  <tr class="border-b border-meridian-border text-[11px] font-mono uppercase text-meridian-muted">
+                    <th class="py-2.5 px-2">Size</th>
+                    <th class="py-2.5 px-2">XS</th>
+                    <th class="py-2.5 px-2">S</th>
+                    <th class="py-2.5 px-2">M</th>
+                    <th class="py-2.5 px-2">L</th>
+                    <th class="py-2.5 px-2">XL</th>
+                    <th class="py-2.5 px-2">XXL</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="py-3 px-2 text-xs font-semibold text-meridian-ink">Units</td>
+                    <td class="py-3 px-1.5"><input type="number" min="0" step="10" data-size="XS" value="100" class="size-input w-full min-w-[62px] px-2.5 py-2 rounded-xl bg-meridian-bg border border-meridian-border font-mono text-sm text-center font-semibold focus:outline-none focus:border-meridian-terracotta focus:bg-white" /></td>
+                    <td class="py-3 px-1.5"><input type="number" min="0" step="10" data-size="S" value="250" class="size-input w-full min-w-[62px] px-2.5 py-2 rounded-xl bg-meridian-bg border border-meridian-border font-mono text-sm text-center font-semibold focus:outline-none focus:border-meridian-terracotta focus:bg-white" /></td>
+                    <td class="py-3 px-1.5"><input type="number" min="0" step="10" data-size="M" value="450" class="size-input w-full min-w-[62px] px-2.5 py-2 rounded-xl bg-meridian-bg border border-meridian-border font-mono text-sm text-center font-semibold focus:outline-none focus:border-meridian-terracotta focus:bg-white" /></td>
+                    <td class="py-3 px-1.5"><input type="number" min="0" step="10" data-size="L" value="400" class="size-input w-full min-w-[62px] px-2.5 py-2 rounded-xl bg-meridian-bg border border-meridian-border font-mono text-sm text-center font-semibold focus:outline-none focus:border-meridian-terracotta focus:bg-white" /></td>
+                    <td class="py-3 px-1.5"><input type="number" min="0" step="10" data-size="XL" value="200" class="size-input w-full min-w-[62px] px-2.5 py-2 rounded-xl bg-meridian-bg border border-meridian-border font-mono text-sm text-center font-semibold focus:outline-none focus:border-meridian-terracotta focus:bg-white" /></td>
+                    <td class="py-3 px-1.5"><input type="number" min="0" step="10" data-size="XXL" value="100" class="size-input w-full min-w-[62px] px-2.5 py-2 rounded-xl bg-meridian-bg border border-meridian-border font-mono text-sm text-center font-semibold focus:outline-none focus:border-meridian-terracotta focus:bg-white" /></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="mt-4 pt-4 border-t border-meridian-border flex flex-wrap items-center justify-between gap-3 text-xs">
+              <div class="text-meridian-muted">
+                Grading Spec: <strong class="text-meridian-ink">Standard US / EU Dual Measurement Chart</strong>
+              </div>
+              <div id="moqWarning" class="hidden text-amber-700 bg-amber-50 border border-amber-200 px-3 py-1 rounded-lg font-medium">
+                Note: Orders under 300 pcs incur a +18% sample-room surcharge.
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 5: Trims, Embellishments & Tech-Pack Upload -->
+          <div class="bg-white rounded-3xl border border-meridian-border p-6 sm:p-8 shadow-2xs">
+            <div class="flex items-center gap-3 mb-6">
+              <span class="w-8 h-8 rounded-full bg-meridian-navy text-white font-mono text-xs font-bold flex items-center justify-center">05</span>
+              <div>
+                <h3 class="font-serif text-2xl font-bold text-meridian-ink">Embellishments, Trims &amp; Tech-Pack Files</h3>
+                <p class="text-xs text-meridian-muted">Customize branding applications and attach CAD flats or measurement sheets</p>
+              </div>
+            </div>
+
+            <!-- Add-on Checkboxes -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
+              <label class="flex items-start gap-3 p-3.5 rounded-2xl border border-meridian-border bg-meridian-bg/60 hover:bg-meridian-bg cursor-pointer transition-colors">
+                <input type="checkbox" checked data-trim="Custom Jacquard Woven Labels & Care Tag" data-cost="0.35" class="trim-checkbox mt-1 w-4 h-4 accent-meridian-terracotta rounded" />
+                <div class="text-xs">
+                  <div class="font-semibold text-meridian-ink">Custom Woven Neck &amp; Care Labels</div>
+                  <div class="text-meridian-muted mt-0.5">High-density damask weave (+$0.35/pc)</div>
+                </div>
+              </label>
+
+              <label class="flex items-start gap-3 p-3.5 rounded-2xl border border-meridian-border bg-meridian-bg/60 hover:bg-meridian-bg cursor-pointer transition-colors">
+                <input type="checkbox" checked data-trim="3D Puff / High-Build Screen Print" data-cost="1.15" class="trim-checkbox mt-1 w-4 h-4 accent-meridian-terracotta rounded" />
+                <div class="text-xs">
+                  <div class="font-semibold text-meridian-ink">3D Puff / Plastisol Screen Print</div>
+                  <div class="text-meridian-muted mt-0.5">Up to 4 colors chest/back (+$1.15/pc)</div>
+                </div>
+              </label>
+
+              <label class="flex items-start gap-3 p-3.5 rounded-2xl border border-meridian-border bg-meridian-bg/60 hover:bg-meridian-bg cursor-pointer transition-colors">
+                <input type="checkbox" data-trim="Chenille / Satin Stitch Embroidery" data-cost="1.60" class="trim-checkbox mt-1 w-4 h-4 accent-meridian-terracotta rounded" />
+                <div class="text-xs">
+                  <div class="font-semibold text-meridian-ink">Heavy Satin / Chenille Embroidery</div>
+                  <div class="text-meridian-muted mt-0.5">Up to 18,000 stitches (+$1.60/pc)</div>
+                </div>
+              </label>
+
+              <label class="flex items-start gap-3 p-3.5 rounded-2xl border border-meridian-border bg-meridian-bg/60 hover:bg-meridian-bg cursor-pointer transition-colors">
+                <input type="checkbox" checked data-trim="Biodegradable Cornstarch Polybag & Hangtag" data-cost="0.40" class="trim-checkbox mt-1 w-4 h-4 accent-meridian-terracotta rounded" />
+                <div class="text-xs">
+                  <div class="font-semibold text-meridian-ink">Eco-Packaging &amp; Embossed Hangtag</div>
+                  <div class="text-meridian-muted mt-0.5">FSC paper + compostable bag (+$0.40/pc)</div>
+                </div>
+              </label>
+            </div>
+
+            <!-- Drag & Drop Tech-Pack Upload Simulation -->
+            <div class="border-2 border-dashed border-meridian-border rounded-2xl p-5 text-center bg-meridian-bg/50 hover:border-meridian-terracotta transition-colors">
+              <input type="file" id="techPackFile" accept=".pdf,.ai,.png,.jpg,.jpeg,.xlsx" class="hidden" />
+              <label for="techPackFile" class="cursor-pointer flex flex-col items-center">
+                <svg class="w-8 h-8 text-meridian-terracotta mb-2" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                </svg>
+                <span class="text-sm font-semibold text-meridian-ink">Attach Tech Pack, CAD Flat, or BOM Sheet</span>
+                <span class="text-xs text-meridian-muted mt-1">Supports PDF, Adobe Illustrator (.AI), PNG, or Excel Graded Specs</span>
+              </label>
+              <div id="uploadedFileBadge" class="hidden mt-3 inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white border border-meridian-border text-xs font-mono text-meridian-ink shadow-2xs">
+                <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                <span id="uploadedFileName">techpack.pdf</span>
+                <button type="button" onclick="clearUploadedFile()" class="text-meridian-muted hover:text-red-600 ml-1">&times;</button>
+              </div>
+            </div>
+
+            <!-- Special Notes -->
+            <div class="mt-4">
+              <label class="block text-xs font-semibold uppercase tracking-wider text-meridian-muted mb-1.5">Construction &amp; Stitch Notes (Optional)</label>
+              <textarea id="specialNotes" rows="2" placeholder="e.g., Double-needle coverstitch on all seams, 2x2 heavy rib cuff 520 GSM, pre-shrunk tolerances +/- 0.5 cm..." class="w-full px-4 py-3 rounded-xl bg-meridian-bg border border-meridian-border text-sm text-meridian-ink focus:outline-none focus:border-meridian-terracotta focus:bg-white transition-colors"></textarea>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- RIGHT COLUMN: Sticky Real-Time Costing & Summary Panel -->
+        <div class="lg:col-span-5 lg:sticky lg:top-24 space-y-6">
+          <div class="bg-meridian-navy text-white rounded-3xl p-6 sm:p-8 shadow-2xl border border-white/10">
+            <div class="flex items-center justify-between pb-5 border-b border-white/15">
+              <div>
+                <span class="text-[11px] font-mono uppercase tracking-widest text-meridian-gold">Estimated FOB Costing</span>
+                <h3 class="font-serif text-2xl font-bold mt-0.5" id="summaryStyleTitle">AM-204 Drop-Shoulder Loopback Hoodie</h3>
+              </div>
+              <span id="tierBadge" class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 text-xs font-mono font-semibold">
+                Tier 2 (-6%)
+              </span>
+            </div>
+
+            <!-- Core Cost Figures -->
+            <div class="grid grid-cols-2 gap-4 py-6 border-b border-white/15">
+              <div class="bg-white/5 rounded-2xl p-4 border border-white/10">
+                <span class="text-xs text-white/60 block">Est. Unit FOB Price</span>
+                <div class="font-mono text-2xl sm:text-3xl font-bold text-white mt-1" id="unitPriceDisplay">$13.94</div>
+                <span class="text-[11px] text-emerald-400 mt-1 block" id="volumeDiscountNote">Includes 6% volume rebate</span>
+              </div>
+              <div class="bg-white/5 rounded-2xl p-4 border border-white/10">
+                <span class="text-xs text-white/60 block">Total Order Volume</span>
+                <div class="font-mono text-2xl sm:text-3xl font-bold text-meridian-gold mt-1"><span id="totalUnitsDisplay">1,500</span> <span class="text-sm font-normal text-white/70">pcs</span></div>
+                <span class="text-[11px] text-white/60 mt-1 block" id="protoSampleEst">Proto Sample: $65 (Credited)</span>
+              </div>
+            </div>
+
+            <!-- Cost Breakdown Line Items -->
+            <div class="py-5 space-y-2.5 text-xs border-b border-white/15">
+              <div class="flex justify-between text-white/80">
+                <span>Base Garment CM &amp; Standard Fabric</span>
+                <span class="font-mono" id="breakdownBase">$9.50</span>
+              </div>
+              <div class="flex justify-between text-white/80">
+                <span>Fabric Composition &amp; GSM Adjustment</span>
+                <span class="font-mono" id="breakdownFabric">+$2.55</span>
+              </div>
+              <div class="flex justify-between text-white/80">
+                <span>Wet Processing / Dye &amp; Wash</span>
+                <span class="font-mono" id="breakdownWash">+$0.65</span>
+              </div>
+              <div class="flex justify-between text-white/80">
+                <span>Custom Trims, Prints &amp; Eco-Pack</span>
+                <span class="font-mono" id="breakdownTrims">+$1.90</span>
+              </div>
+              <div class="flex justify-between text-emerald-300 font-medium">
+                <span>Volume Tier Discount</span>
+                <span class="font-mono" id="breakdownDiscount">-$0.66</span>
+              </div>
+            </div>
+
+            <!-- Grand Total Estimated FOB -->
+            <div class="py-6 flex items-baseline justify-between">
+              <div>
+                <span class="text-xs uppercase tracking-wider text-white/70 block">Estimated Total FOB Value</span>
+                <span class="text-[11px] text-white/50">Excludes ocean/air freight &amp; import duty</span>
+              </div>
+              <div class="font-mono text-3xl sm:text-4xl font-bold text-white" id="totalOrderValueDisplay">$20,910</div>
+            </div>
+
+            <!-- Lead Time & Action Buttons -->
+            <div class="space-y-3">
+              <button type="submit" class="w-full py-4 px-6 rounded-2xl bg-meridian-terracotta hover:bg-meridian-terracottaDark text-white font-semibold text-sm sm:text-base transition-all shadow-lg flex items-center justify-center gap-2 cursor-pointer">
+                <span>Submit Formal RFQ to Merchandising Desk</span>
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+              </button>
+
+              <button type="button" onclick="openTechSheetPreview()" class="w-full py-3.5 px-6 rounded-2xl bg-white/10 hover:bg-white/15 text-white font-medium text-sm transition-all border border-white/15 flex items-center justify-center gap-2 cursor-pointer">
+                <svg class="w-4 h-4 text-meridian-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                <span>Preview Printable Tech-Pack &amp; Proforma Sheet</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </section>
+
+  <!-- Section 4: Live Buyer Inquiry & Production Pipeline Tracker -->
+  <section id="order-pipeline" class="py-20 bg-white border-b border-meridian-border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+        <div>
+          <span class="text-xs font-mono uppercase tracking-[0.2em] text-meridian-terracotta font-semibold">Merchandising Desk Deskboard</span>
+          <h2 class="font-serif text-3xl sm:text-4xl font-bold text-meridian-ink mt-2">Active International Buyer Quotations &amp; Sampling</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <select id="pipelineCountryFilter" onchange="renderPipelineTable()" class="px-4 py-2.5 rounded-xl bg-meridian-bg border border-meridian-border text-xs font-semibold text-meridian-ink">
+            <option value="ALL">All Destinations</option>
+            <option value="USA">🇺🇸 USA</option>
+            <option value="Canada">🇨🇦 Canada</option>
+            <option value="Italy">🇮🇹 Italy</option>
+            <option value="United Kingdom">🇬🇧 United Kingdom</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Responsive Pipeline Table -->
+      <div class="bg-meridian-bg rounded-3xl border border-meridian-border overflow-hidden shadow-2xs">
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="border-b border-meridian-border bg-white/70 text-[11px] font-mono uppercase tracking-wider text-meridian-muted">
+                <th class="py-4 px-5">RFQ ID</th>
+                <th class="py-4 px-5">Brand &amp; Destination</th>
+                <th class="py-4 px-5">Garment Style &amp; Fabric Spec</th>
+                <th class="py-4 px-5">Quantity</th>
+                <th class="py-4 px-5">Est. FOB Value</th>
+                <th class="py-4 px-5">Production Stage</th>
+                <th class="py-4 px-5 text-right">Dossier</th>
+              </tr>
+            </thead>
+            <tbody id="pipelineTableBody" class="divide-y divide-meridian-border text-sm">
+              <!-- Dynamically rendered via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 5: Compliance, Quality Assurance & 4-Step Execution Workflow -->
+  <section id="compliance" class="py-20 editorial-grid">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-xs font-mono uppercase tracking-[0.2em] text-meridian-terracotta font-semibold">Zero-Compromise Governance</span>
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-meridian-ink mt-2">Audited Sustainability &amp; 4-Stage Quality Control</h2>
+        <p class="text-sm sm:text-base text-meridian-muted mt-3">
+          Every partner mill in our network undergoes rigorous social compliance, chemical safety, and inline AQL 2.5 inspection before goods leave port.
+        </p>
+      </div>
+
+      <!-- Certifications Grid -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mb-16">
+        <div class="bg-white rounded-2xl border border-meridian-border p-5 text-center shadow-2xs">
+          <div class="font-mono font-bold text-meridian-navy text-sm">OEKO-TEX®</div>
+          <div class="text-[11px] text-meridian-muted mt-1">Standard 100 Certified</div>
+        </div>
+        <div class="bg-white rounded-2xl border border-meridian-border p-5 text-center shadow-2xs">
+          <div class="font-mono font-bold text-meridian-navy text-sm">GOTS</div>
+          <div class="text-[11px] text-meridian-muted mt-1">Global Organic Textile</div>
+        </div>
+        <div class="bg-white rounded-2xl border border-meridian-border p-5 text-center shadow-2xs">
+          <div class="font-mono font-bold text-meridian-navy text-sm">WRAP</div>
+          <div class="text-[11px] text-meridian-muted mt-1">Gold &amp; Platinum Ethical</div>
+        </div>
+        <div class="bg-white rounded-2xl border border-meridian-border p-5 text-center shadow-2xs">
+          <div class="font-mono font-bold text-meridian-navy text-sm">amfori BSCI</div>
+          <div class="text-[11px] text-meridian-muted mt-1">Grade A Social Audit</div>
+        </div>
+        <div class="bg-white rounded-2xl border border-meridian-border p-5 text-center shadow-2xs">
+          <div class="font-mono font-bold text-meridian-navy text-sm">Sedex SMETA</div>
+          <div class="text-[11px] text-meridian-muted mt-1">4-Pillar Supply Chain</div>
+        </div>
+        <div class="bg-white rounded-2xl border border-meridian-border p-5 text-center shadow-2xs">
+          <div class="font-mono font-bold text-meridian-navy text-sm">USGBC LEED</div>
+          <div class="text-[11px] text-meridian-muted mt-1">Green Platinum Factories</div>
+        </div>
+      </div>
+
+      <!-- 4-Step Buying House Workflow -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="bg-white rounded-3xl border border-meridian-border p-6 relative">
+          <span class="font-serif text-4xl font-bold text-meridian-terracotta/25">01</span>
+          <h3 class="font-serif text-xl font-bold text-meridian-ink mt-2">Tech-Pack &amp; Mill Matching</h3>
+          <p class="text-xs text-meridian-muted leading-relaxed mt-2">
+            Our textile engineers analyze your BOM, yarn count, and target FOB, assigning the style to a specialized knit, woven, or denim facility within 24 hours.
+          </p>
+        </div>
+        <div class="bg-white rounded-3xl border border-meridian-border p-6 relative">
+          <span class="font-serif text-4xl font-bold text-meridian-terracotta/25">02</span>
+          <h3 class="font-serif text-xl font-bold text-meridian-ink mt-2">Proto, Fit &amp; Lab-Dip Approval</h3>
+          <p class="text-xs text-meridian-muted leading-relaxed mt-2">
+            Pantone TCX lab-dips and physical proto samples are couriered via DHL Express to New York, Milan, or Toronto within 10–14 days for fit sign-off.
+          </p>
+        </div>
+        <div class="bg-white rounded-3xl border border-meridian-border p-6 relative">
+          <span class="font-serif text-4xl font-bold text-meridian-terracotta/25">03</span>
+          <h3 class="font-serif text-xl font-bold text-meridian-ink mt-2">Bulk Cutting &amp; Inline QA</h3>
+          <p class="text-xs text-meridian-muted leading-relaxed mt-2">
+            Dedicated resident QC inspectors monitor fabric shrinkage, GSM consistency, stitching tension, and color shading daily on the sewing floor.
+          </p>
+        </div>
+        <div class="bg-white rounded-3xl border border-meridian-border p-6 relative">
+          <span class="font-serif text-4xl font-bold text-meridian-terracotta/25">04</span>
+          <h3 class="font-serif text-xl font-bold text-meridian-ink mt-2">AQL 2.5 Audit &amp; Export</h3>
+          <p class="text-xs text-meridian-muted leading-relaxed mt-2">
+            Final statistical AQL 2.5 inspection, metal detection, carton drop-testing, and complete customs documentation (GSP / REX / USMCA support).
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-meridian-navy text-white py-14 border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10 pb-10 border-b border-white/10">
+        <div class="md:col-span-2 space-y-3">
+          <span class="font-serif text-2xl font-bold tracking-tight block">ATELIER MERIDIAN</span>
+          <p class="text-xs text-white/70 max-w-md leading-relaxed">
+            Global Apparel Buying House &amp; Technical Sourcing Partner. Delivering transparent FOB manufacturing, sustainable fabric R&amp;D, and strict AQL quality assurance for fashion brands worldwide.
+          </p>
+          <div class="text-xs font-mono text-meridian-gold pt-2">
+            Sourcing HQ: Gulshan Avenue, Dhaka • Liaison Desks: Milan • New York • Toronto
+          </div>
+        </div>
+        <div>
+          <h4 class="text-xs font-mono uppercase tracking-wider text-white/50 mb-3">Product Divisions</h4>
+          <ul class="space-y-2 text-xs text-white/80">
+            <li>Circular Knitwear &amp; Heavy Fleece</li>
+            <li>Fine Woven Shirting &amp; Linen</li>
+            <li>Selvedge Denim &amp; Enzyme Wash</li>
+            <li>Technical Outerwear &amp; Tailoring</li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-xs font-mono uppercase tracking-wider text-white/50 mb-3">Direct Merchandising</h4>
+          <ul class="space-y-2 text-xs text-white/80 font-mono">
+            <li>rfq@ateliermeridian.com</li>
+            <li>+1 (212) 555-0194 (US Desk)</li>
+            <li>+39 02 5550 1829 (Milan Desk)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/50">
+        <span>&copy; 2026 Atelier Meridian Sourcing Ltd. All rights reserved.</span>
+        <span>ISO 9001:2015 Quality Management Certified</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODAL: Printable Formal Quotation & Tech-Pack Spec Sheet -->
+  <div id="techSheetModal" class="hidden fixed inset-0 z-50 bg-meridian-ink/70 backdrop-blur-xs overflow-y-auto p-4 sm:p-6 flex items-center justify-center">
+    <div class="bg-white rounded-3xl max-w-3xl w-full p-6 sm:p-10 shadow-2xl border border-meridian-border relative my-8">
+      <!-- Modal Top Controls -->
+      <div class="flex items-center justify-between pb-4 border-b border-meridian-border no-print">
+        <span class="text-xs font-mono uppercase tracking-wider text-meridian-terracotta font-semibold">Official Proforma Costing &amp; Tech Dossier</span>
+        <div class="flex items-center gap-2">
+          <button type="button" onclick="window.print()" class="px-4 py-2 rounded-xl bg-meridian-navy text-white text-xs font-semibold hover:bg-meridian-terracotta transition-colors cursor-pointer">
+            Print / Save PDF
+          </button>
+          <button type="button" onclick="closeTechSheetModal()" class="w-9 h-9 rounded-xl bg-meridian-bg text-meridian-ink font-bold hover:bg-meridian-border transition-colors cursor-pointer">
+            &times;
+          </button>
+        </div>
+      </div>
+
+      <!-- Printable Sheet Content -->
+      <div id="techSheetContent" class="pt-6 space-y-6">
+        <!-- Populated dynamically by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toastNotification" class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none">
+    <div class="bg-meridian-navy text-white px-5 py-4 rounded-2xl shadow-2xl border border-white/15 flex items-center gap-3 max-w-md">
+      <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 shrink-0"></span>
+      <div class="text-xs sm:text-sm font-medium" id="toastMessage">RFQ Submitted Successfully!</div>
+    </div>
+  </div>
+
+  <script>
+    // =========================================================================
+    // 1. GLOBAL TRADE CORRIDOR DATA & REGION SWITCHER
+    // =========================================================================
+    const regionData = {
+      usa: {
+        flag: '🇺🇸',
+        title: 'United States Export Corridor',
+        hubs: 'New York Garment District • Los Angeles • Seattle',
+        transit: '26–30 Days Sea (FOB Chittagong to NY/NJ) • 4 Days Air',
+        dutyAdvantage: 'US Customs C-TPAT Verified Supply Chain • Full UFLPA Cotton Traceability',
+        topCategories: ['Heavyweight Streetwear Fleece', '100% Cotton Oxford Shirting', 'Selvedge & Enzyme Denim'],
+        activeClients: '22 Active US Contemporary & Streetwear Labels',
+        avgOrder: '3,400 pcs / style'
+      },
+      canada: {
+        flag: '🇨🇦',
+        title: 'Canada Duty-Free Corridor',
+        hubs: 'Toronto • Montreal • Vancouver',
+        transit: '28–32 Days Sea (Vancouver / Montreal) • 4 Days Air',
+        dutyAdvantage: '0% Duty-Free Tariff Access under Canadian Least-Developed Country Tariff (LDCT)',
+        topCategories: ['Merino & Fleece Outerwear', 'Organic Flannel Overshirts', 'Technical Activewear'],
+        activeClients: '11 Active Canadian Outerwear & Lifestyle Brands',
+        avgOrder: '2,800 pcs / style'
+      },
+      italy: {
+        flag: '🇮🇹',
+        title: 'Italy & Mediterranean Luxury Corridor',
+        hubs: 'Milan • Florence • Bologna',
+        transit: '18–21 Days Sea (Port of Genoa) • 3 Days Air Express',
+        dutyAdvantage: '0% Duty-Free EU EBA Access • European Fabric Mill Nomination (Albini, Candiani)',
+        topCategories: ['European Linen-Cotton Tailoring', 'Garment-Dyed Jersey & Knitwear', 'Unstructured Blazers'],
+        activeClients: '14 Active Italian Contemporary & Milanese Houses',
+        avgOrder: '1,650 pcs / style'
+      },
+      uk: {
+        flag: '🇬🇧',
+        title: 'United Kingdom & London Corridor',
+        hubs: 'London • Manchester • Leeds',
+        transit: '21–24 Days Sea (Port of Felixstowe) • 3 Days Air',
+        dutyAdvantage: '0% Duty-Free UK Developing Countries Trading Scheme (DCTS)',
+        topCategories: ['Tailored Wool-Blend Coats', 'Heavy Loopback Jersey', 'Organic Poplin Dresses'],
+        activeClients: '9 Active British Heritage & High-Street Brands',
+        avgOrder: '2,200 pcs / style'
+      },
+      eu: {
+        flag: '🇩🇪',
+        title: 'Germany, France & Nordics Corridor',
+        hubs: 'Berlin • Hamburg • Paris • Stockholm',
+        transit: '22–25 Days Sea (Hamburg / Rotterdam) • 3 Days Air',
+        dutyAdvantage: '0% Duty-Free EU EBA • Strict OEKO-TEX & GOTS Organic Compliance',
+        topCategories: ['GOTS Certified Basics', 'PFC-Free Technical Shell Jackets', 'Minimalist Knitwear'],
+        activeClients: '16 Active Northern European Eco-Conscious Labels',
+        avgOrder: '4,100 pcs / style'
+      }
+    };
+
+    function selectRegion(regionKey) {
+      const data = regionData[regionKey];
+      if (!data) return;
+
+      // Update Tab Active States
+      document.querySelectorAll('.region-tab').forEach(btn => {
+        if (btn.dataset.region === regionKey) {
+          btn.className = 'region-tab active px-5 py-2.5 rounded-xl text-sm font-semibold transition-all bg-meridian-navy text-white shadow-xs';
+        } else {
+          btn.className = 'region-tab px-5 py-2.5 rounded-xl text-sm font-semibold transition-all bg-meridian-bg text-meridian-ink border border-meridian-border hover:border-meridian-ink/40';
+        }
+      });
+
+      // Highlight SVG Arc
+      ['usa', 'canada', 'italy', 'uk', 'eu'].forEach(key => {
+        const arc = document.getElementById(`arc-${key}`);
+        if (arc) {
+          arc.setAttribute('stroke', key === regionKey ? '#B85D3B' : '#C5A059');
+          arc.setAttribute('stroke-width', key === regionKey ? '3' : '1.6');
+          arc.setAttribute('opacity', key === regionKey ? '1' : '0.45');
+        }
+      });
+
+      // Render Detail Card
+      const container = document.getElementById('regionDetailCard');
+      container.innerHTML = `
+        <div>
+          <div class="flex items-center justify-between">
+            <span class="text-3xl">${data.flag}</span>
+            <span class="px-3 py-1 rounded-full bg-white border border-meridian-border text-xs font-mono font-semibold text-meridian-navy">
+              ${data.activeClients}
+            </span>
+          </div>
+          <h3 class="font-serif text-2xl font-bold text-meridian-ink mt-4">${data.title}</h3>
+          <p class="text-xs font-mono text-meridian-terracotta font-semibold mt-1">${data.hubs}</p>
+
+          <div class="mt-5 space-y-3 text-xs">
+            <div class="p-3.5 rounded-2xl bg-white border border-meridian-border">
+              <span class="text-meridian-muted block uppercase tracking-wider text-[10px] font-semibold">Tariff &amp; Trade Advantage</span>
+              <span class="font-semibold text-meridian-ink mt-0.5 block">${data.dutyAdvantage}</span>
+            </div>
+            <div class="p-3.5 rounded-2xl bg-white border border-meridian-border">
+              <span class="text-meridian-muted block uppercase tracking-wider text-[10px] font-semibold">Transit &amp; Logistics Lead Time</span>
+              <span class="font-medium text-meridian-ink mt-0.5 block">${data.transit}</span>
+            </div>
+          </div>
+
+          <div class="mt-5">
+            <span class="text-[11px] font-semibold uppercase tracking-wider text-meridian-muted block mb-2">Most Sourced Categories</span>
+            <div class="flex flex-wrap gap-1.5">
+              ${data.topCategories.map(cat => `<span class="px-3 py-1 rounded-lg bg-white border border-meridian-border text-xs font-medium text-meridian-ink">${cat}</span>`).join('')}
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-6 pt-4 border-t border-meridian-border flex items-center justify-between text-xs">
+          <span class="text-meridian-muted">Avg Order Volume: <strong class="text-meridian-ink font-mono">${data.avgOrder}</strong></span>
+          <a href="#rfq-builder" class="font-semibold text-meridian-terracotta hover:underline">Start RFQ for ${regionKey.toUpperCase()} &rarr;</a>
+        </div>
+      `;
+    }
+
+    document.querySelectorAll('.region-tab').forEach(btn => {
+      btn.addEventListener('click', () => selectRegion(btn.dataset.region));
+    });
+
+    // =========================================================================
+    // 2. INTERACTIVE GARMENT QUOTATION & COSTING ENGINE
+    // =========================================================================
+    const currencyConfig = {
+      USD: { symbol: '$', rate: 1.00 },
+      EUR: { symbol: '€', rate: 0.92 },
+      CAD: { symbol: 'CA$', rate: 1.38 },
+      GBP: { symbol: '£', rate: 0.79 }
+    };
+
+    let state = {
+      currency: 'USD',
+      categoryName: 'Heavy Knitwear',
+      baseCategoryPrice: 9.50,
+      uploadedFile: null,
+      lastCalculated: {}
+    };
+
+    function formatMoney(usdAmount, decimals = 2) {
+      const cfg = currencyConfig[state.currency];
+      const converted = usdAmount * cfg.rate;
+      return cfg.symbol + converted.toLocaleString('en-US', {
+        minimumFractionDigits: decimals,
+        maximumFractionDigits: decimals
+      });
+    }
+
+    function calculateQuote() {
+      // 1. Gather Size Matrix Units
+      let totalUnits = 0;
+      const sizeBreakdown = {};
+      document.querySelectorAll('.size-input').forEach(input => {
+        const qty = Math.max(0, parseInt(input.value, 10) || 0);
+        sizeBreakdown[input.dataset.size] = qty;
+        totalUnits += qty;
+      });
+
+      // MOQ warning toggle
+      const moqWarning = document.getElementById('moqWarning');
+      if (totalUnits < 300) {
+        moqWarning.classList.remove('hidden');
+      } else {
+        moqWarning.classList.add('hidden');
+      }
+
+      // 2. Fabric Multiplier & GSM Weight Adjustment
+      const fabricSelect = document.getElementById('fabricType');
+      const fabricMult = parseFloat(fabricSelect.selectedOptions[0].dataset.mult || 1.0);
+      const gsm = parseInt(document.getElementById('fabricGsm').value, 10);
+      document.getElementById('gsmDisplay').textContent = gsm;
+
+      // Baseline GSM is 240; heavier fabrics add yarn consumption cost
+      const gsmDeltaCost = Math.max(0, (gsm - 240) * 0.0085);
+      const fabricAdjustment = (state.baseCategoryPrice * (fabricMult - 1)) + gsmDeltaCost;
+
+      // 3. Wash / Dyeing Addon
+      const finishSelect = document.getElementById('fabricFinish');
+      const washCost = parseFloat(finishSelect.selectedOptions[0].dataset.addon || 0);
+
+      // 4. Trims & Embellishments
+      let trimsCost = 0;
+      const selectedTrims = [];
+      document.querySelectorAll('.trim-checkbox:checked').forEach(cb => {
+        trimsCost += parseFloat(cb.dataset.cost || 0);
+        selectedTrims.push(cb.dataset.trim);
+      });
+
+      // Subtotal before volume tiering
+      const rawUnitCost = state.baseCategoryPrice + fabricAdjustment + washCost + trimsCost;
+
+      // 5. Volume Tier Discount / Small-Batch Surcharge
+      let discountRate = 0;
+      let tierLabel = 'Standard Tier';
+      let tierNote = 'Standard MOQ pricing';
+
+      if (totalUnits < 300) {
+        discountRate = -0.18; // 18% surcharge for micro-run
+        tierLabel = 'Micro-Run (+18%)';
+        tierNote = 'Under 300 pcs capsule surcharge';
+      } else if (totalUnits >= 5000) {
+        discountRate = 0.14;
+        tierLabel = 'Tier 4 (-14%)';
+        tierNote = 'Includes 14% factory bulk rebate';
+      } else if (totalUnits >= 3000) {
+        discountRate = 0.10;
+        tierLabel = 'Tier 3 (-10%)';
+        tierNote = 'Includes 10% volume rebate';
+      } else if (totalUnits >= 1000) {
+        discountRate = 0.06;
+        tierLabel = 'Tier 2 (-6%)';
+        tierNote = 'Includes 6% volume rebate';
+      }
+
+      const discountAmount = rawUnitCost * discountRate;
+      const finalUnitFOB = Math.max(1, rawUnitCost - discountAmount);
+      const totalOrderFOB = finalUnitFOB * totalUnits;
+
+      // Update UI Elements
+      const styleTitle = document.getElementById('styleName').value.trim() || 'Custom Apparel Style';
+      document.getElementById('summaryStyleTitle').textContent = styleTitle;
+      document.getElementById('tierBadge').textContent = tierLabel;
+      document.getElementById('unitPriceDisplay').textContent = formatMoney(finalUnitFOB, 2);
+      document.getElementById('volumeDiscountNote').textContent = tierNote;
+      document.getElementById('totalUnitsDisplay').textContent = totalUnits.toLocaleString();
+      document.getElementById('protoSampleEst').textContent = `Proto Sample: ${formatMoney(65, 0)} (Credited)`;
+
+      document.getElementById('breakdownBase').textContent = formatMoney(state.baseCategoryPrice, 2);
+      document.getElementById('breakdownFabric').textContent = '+' + formatMoney(fabricAdjustment, 2);
+      document.getElementById('breakdownWash').textContent = '+' + formatMoney(washCost, 2);
+      document.getElementById('breakdownTrims').textContent = '+' + formatMoney(trimsCost, 2);
+      document.getElementById('breakdownDiscount').textContent =
+        discountAmount >= 0
+          ? '-' + formatMoney(discountAmount, 2)
+          : '+' + formatMoney(Math.abs(discountAmount), 2);
+
+      document.getElementById('totalOrderValueDisplay').textContent = formatMoney(totalOrderFOB, 0);
+
+      // Save state for modal / submission
+      state.lastCalculated = {
+        styleName: styleTitle,
+        category: state.categoryName,
+        fit: document.getElementById('garmentFit').value,
+        fabric: fabricSelect.value,
+        gsm: gsm,
+        finish: finishSelect.value,
+        colorways: document.getElementById('colorways').value,
+        sizeBreakdown,
+        totalUnits,
+        selectedTrims,
+        unitFOBFormatted: formatMoney(finalUnitFOB, 2),
+        totalFOBFormatted: formatMoney(totalOrderFOB, 0),
+        unitFOBUsd: finalUnitFOB,
+        totalFOBUsd: totalOrderFOB
+      };
+    }
+
+    // Category Card Selection
+    document.querySelectorAll('.cat-card').forEach(card => {
+      card.addEventListener('click', () => {
+        document.querySelectorAll('.cat-card').forEach(c => {
+          c.className = 'cat-card text-left p-3.5 rounded-2xl border border-meridian-border bg-meridian-bg hover:border-meridian-ink/40 transition-all';
+        });
+        card.className = 'cat-card active text-left p-3.5 rounded-2xl border-2 border-meridian-terracotta bg-meridian-terracotta/5 transition-all';
+        state.baseCategoryPrice = parseFloat(card.dataset.base);
+        state.categoryName = card.querySelector('.font-semibold').textContent;
+        calculateQuote();
+      });
+    });
+
+    // Currency Switcher
+    document.querySelectorAll('.curr-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.curr-btn').forEach(b => {
+          b.className = 'curr-btn px-3 py-1.5 rounded-xl text-xs font-mono font-bold text-meridian-muted hover:text-meridian-ink';
+        });
+        btn.className = 'curr-btn px-3 py-1.5 rounded-xl text-xs font-mono font-bold bg-meridian-navy text-white';
+        state.currency = btn.dataset.curr;
+        calculateQuote();
+      });
+    });
+
+    // Size Preset Helper
+    function applySizePreset(targetTotal) {
+      const ratios = { XS: 0.07, S: 0.17, M: 0.30, L: 0.27, XL: 0.13, XXL: 0.06 };
+      document.querySelectorAll('.size-input').forEach(input => {
+        const size = input.dataset.size;
+        input.value = Math.round((targetTotal * ratios[size]) / 10) * 10;
+      });
+      calculateQuote();
+    }
+
+    // File Upload Simulation
+    document.getElementById('techPackFile').addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        state.uploadedFile = file.name;
+        document.getElementById('uploadedFileName').textContent = file.name;
+        document.getElementById('uploadedFileBadge').classList.remove('hidden');
+        showToast(`Attached "${file.name}" to RFQ Dossier.`);
+      }
+    });
+
+    function clearUploadedFile() {
+      state.uploadedFile = null;
+      document.getElementById('techPackFile').value = '';
+      document.getElementById('uploadedFileBadge').classList.add('hidden');
+    }
+
+    // Bind live recalculation listeners
+    ['styleName', 'garmentFit', 'fabricType', 'fabricFinish', 'fabricGsm'].forEach(id => {
+      document.getElementById(id).addEventListener('input', calculateQuote);
+    });
+    document.querySelectorAll('.size-input, .trim-checkbox').forEach(el => {
+      el.addEventListener('input', calculateQuote);
+      el.addEventListener('change', calculateQuote);
+    });
+
+    // =========================================================================
+    // 3. LIVE BUYER PIPELINE & ORDER TRACKER
+    // =========================================================================
+    const initialOrders = [
+      {
+        id: 'RFQ-8841',
+        company: 'Casa Brera Milano SRL',
+        country: 'Italy',
+        flag: '🇮🇹',
+        style: 'Unstructured Linen-Cotton Double-Breasted Blazer',
+        fabric: '55% European Linen / 45% Cotton • 290 GSM',
+        units: 2500,
+        fobDisplay: '€64,500',
+        status: 'Proto Sample Dispatched',
+        statusColor: 'bg-blue-50 text-blue-700 border-blue-200',
+        season: 'SS27'
+      },
+      {
+        id: 'RFQ-8839',
+        company: 'Mercer & Mott NYC',
+        country: 'USA',
+        flag: '🇺🇸',
+        style: 'Heavyweight Pigment-Dyed Boxy Hoodie',
+        fabric: '100% GOTS Organic Cotton • 480 GSM',
+        units: 5000,
+        fobDisplay: '$74,000',
+        status: 'Bulk Production (Line 4)',
+        statusColor: 'bg-emerald-50 text-emerald-700 border-emerald-200',
+        season: 'FW27'
+      },
+      {
+        id: 'RFQ-8834',
+        company: 'Laurentian Outerwear Co.',
+        country: 'Canada',
+        flag: '🇨🇦',
+        style: 'Brushed Organic Twill Overshirt Jacket',
+        fabric: '100% Combed Ring-Spun Cotton • 360 GSM',
+        units: 3200,
+        fobDisplay: 'CA$68,480',
+        status: 'Lab-Dip & Trim Approval',
+        statusColor: 'bg-amber-50 text-amber-700 border-amber-200',
+        season: 'FW27'
+      },
+      {
+        id: 'RFQ-8829',
+        company: 'Albion Heritage Menswear',
+        country: 'United Kingdom',
+        flag: '🇬🇧',
+        style: '14oz Selvedge Straight-Leg Chino',
+        fabric: '100% Japanese Selvedge Twill • 410 GSM',
+        units: 1800,
+        fobDisplay: '£26,640',
+        status: 'AQL 2.5 Final Inspection',
+        statusColor: 'bg-purple-50 text-purple-700 border-purple-200',
+        season: 'SS27'
+      }
+    ];
+
+    let pipelineOrders = [...initialOrders];
+
+    const countryFlags = {
+      'USA': '🇺🇸',
+      'Canada': '🇨🇦',
+      'Italy': '🇮🇹',
+      'United Kingdom': '🇬🇧',
+      'Germany': '🇩🇪',
+      'France': '🇫🇷',
+      'Australia': '🇦🇺'
+    };
+
+    function renderPipelineTable() {
+      const filter = document.getElementById('pipelineCountryFilter').value;
+      const tbody = document.getElementById('pipelineTableBody');
+      const filtered = filter === 'ALL'
+        ? pipelineOrders
+        : pipelineOrders.filter(o => o.country === filter);
+
+      document.getElementById('navPipelineBadge').textContent = pipelineOrders.length;
+
+      tbody.innerHTML = filtered.map(order => `
+        <tr class="hover:bg-white transition-colors">
+          <td class="py-4 px-5 font-mono text-xs font-bold text-meridian-navy">${order.id}</td>
+          <td class="py-4 px-5">
+            <div class="font-semibold text-meridian-ink">${order.flag} ${order.company}</div>
+            <div class="text-xs text-meridian-muted">${order.country} • ${order.season}</div>
+          </td>
+          <td class="py-4 px-5">
+            <div class="font-medium text-meridian-ink">${order.style}</div>
+            <div class="text-xs font-mono text-meridian-muted mt-0.5">${order.fabric}</div>
+          </td>
+          <td class="py-4 px-5 font-mono font-semibold text-meridian-ink">${order.units.toLocaleString()} pcs</td>
+          <td class="py-4 px-5 font-mono font-bold text-meridian-terracotta">${order.fobDisplay}</td>
+          <td class="py-4 px-5">
+            <span class="inline-flex items-center px-3 py-1 rounded-full border text-xs font-semibold ${order.statusColor}">
+              ${order.status}
+            </span>
+          </td>
+          <td class="py-4 px-5 text-right">
+            <button type="button" onclick="inspectPipelineOrder('${order.id}')" class="px-3 py-1.5 rounded-lg bg-white border border-meridian-border text-xs font-semibold text-meridian-ink hover:border-meridian-terracotta transition-colors cursor-pointer">
+              Inspect
+            </button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    // Handle RFQ Form Submission
+    document.getElementById('rfqForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const company = document.getElementById('buyerCompany').value.trim();
+      const country = document.getElementById('buyerCountry').value;
+      const season = document.getElementById('deliverySeason').value.split(' ')[0];
+      const calc = state.lastCalculated;
+
+      const newId = 'RFQ-' + Math.floor(8845 + Math.random() * 900);
+      const newOrder = {
+        id: newId,
+        company: company || 'International Apparel Buyer',
+        country: country,
+        flag: countryFlags[country] || '🌐',
+        style: calc.styleName,
+        fabric: `${calc.fabric} • ${calc.gsm} GSM`,
+        units: calc.totalUnits,
+        fobDisplay: calc.totalFOBFormatted,
+        status: 'RFQ Received • Costing Desk',
+        statusColor: 'bg-emerald-50 text-emerald-700 border-emerald-200',
+        season: season
+      };
+
+      pipelineOrders.unshift(newOrder);
+      renderPipelineTable();
+      showToast(`Quotation ${newId} submitted! Assigned to Senior Merchandiser.`);
+
+      // Scroll smoothly to pipeline to see newly added inquiry
+      document.getElementById('order-pipeline').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    function openPipelineDrawer() {
+      document.getElementById('order-pipeline').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // =========================================================================
+    // 4. FORMAL TECH-PACK & PROFORMA SHEET MODAL
+    // =========================================================================
+    function openTechSheetPreview() {
+      calculateQuote();
+      const calc = state.lastCalculated;
+      const company = document.getElementById('buyerCompany').value.trim() || 'Prospective International Brand';
+      const country = document.getElementById('buyerCountry').value;
+      const email = document.getElementById('buyerEmail').value.trim() || 'buyer@brand.com';
+      const season = document.getElementById('deliverySeason').value;
+      const notes = document.getElementById('specialNotes').value.trim() || 'Standard export AQL 2.5 construction tolerances.';
+      const today = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+
+      const sizeCells = Object.entries(calc.sizeBreakdown)
+        .map(([sz, qty]) => `<td class="border border-meridian-border p-2 text-center font-mono">${qty}</td>`)
+        .join('');
+
+      document.getElementById('techSheetContent').innerHTML = `
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-meridian-border pb-6">
+          <div>
+            <div class="font-serif text-2xl font-bold text-meridian-ink">ATELIER MERIDIAN SOURCING LTD.</div>
+            <div class="text-xs text-meridian-muted">International Apparel Buying House • Garment Costing &amp; Tech Specification</div>
+          </div>
+          <div class="text-left sm:text-right font-mono text-xs">
+            <div class="font-bold text-meridian-ink">DATE: ${today}</div>
+            <div class="text-meridian-terracotta">CURRENCY: ${state.currency} (FOB)</div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs bg-meridian-bg p-4 rounded-2xl border border-meridian-border">
+          <div>
+            <span class="text-meridian-muted uppercase block text-[10px] font-semibold">Buyer &amp; Destination</span>
+            <strong class="text-sm text-meridian-ink block mt-0.5">${company} (${country})</strong>
+            <span class="text-meridian-muted">${email}</span>
+          </div>
+          <div>
+            <span class="text-meridian-muted uppercase block text-[10px] font-semibold">Style &amp; Delivery Window</span>
+            <strong class="text-sm text-meridian-ink block mt-0.5">${calc.styleName}</strong>
+            <span class="text-meridian-muted">${calc.category} • ${calc.fit} • ${season}</span>
+          </div>
+        </div>
+
+        <div class="space-y-2 text-xs">
+          <h4 class="font-mono uppercase tracking-wider text-meridian-muted font-bold">Technical Bill of Materials (BOM)</h4>
+          <table class="w-full border-collapse border border-meridian-border">
+            <tr>
+              <td class="border border-meridian-border p-2.5 bg-meridian-bg font-semibold w-1/3">Fabric Composition</td>
+              <td class="border border-meridian-border p-2.5">${calc.fabric} (${calc.gsm} GSM)</td>
+            </tr>
+            <tr>
+              <td class="border border-meridian-border p-2.5 bg-meridian-bg font-semibold">Dyeing &amp; Finishing</td>
+              <td class="border border-meridian-border p-2.5">${calc.finish}</td>
+            </tr>
+            <tr>
+              <td class="border border-meridian-border p-2.5 bg-meridian-bg font-semibold">Colorways (Pantone)</td>
+              <td class="border border-meridian-border p-2.5">${calc.colorways}</td>
+            </tr>
+            <tr>
+              <td class="border border-meridian-border p-2.5 bg-meridian-bg font-semibold">Trims &amp; Embellishments</td>
+              <td class="border border-meridian-border p-2.5">${calc.selectedTrims.join(' • ') || 'Standard Unbranded Trims'}</td>
+            </tr>
+            <tr>
+              <td class="border border-meridian-border p-2.5 bg-meridian-bg font-semibold">Attached CAD / Tech Pack</td>
+              <td class="border border-meridian-border p-2.5 font-mono">${state.uploadedFile || 'No external file attached (Using builder spec)'}</td>
+            </tr>
+            <tr>
+              <td class="border border-meridian-border p-2.5 bg-meridian-bg font-semibold">Construction Notes</td>
+              <td class="border border-meridian-border p-2.5">${notes}</td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="space-y-2 text-xs">
+          <h4 class="font-mono uppercase tracking-wider text-meridian-muted font-bold">Size Ratio &amp; FOB Valuation</h4>
+          <table class="w-full border-collapse border border-meridian-border">
+            <thead>
+              <tr class="bg-meridian-bg font-mono">
+                <th class="border border-meridian-border p-2">XS</th>
+                <th class="border border-meridian-border p-2">S</th>
+                <th class="border border-meridian-border p-2">M</th>
+                <th class="border border-meridian-border p-2">L</th>
+                <th class="border border-meridian-border p-2">XL</th>
+                <th class="border border-meridian-border p-2">XXL</th>
+                <th class="border border-meridian-border p-2 bg-meridian-navy text-white">TOTAL PCS</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                ${sizeCells}
+                <td class="border border-meridian-border p-2 text-center font-mono font-bold bg-meridian-bg">${calc.totalUnits.toLocaleString()}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-4 p-5 rounded-2xl bg-meridian-navy text-white">
+          <div>
+            <span class="text-xs text-white/70 block">Estimated Unit FOB Price</span>
+            <span class="font-mono text-2xl font-bold">${calc.unitFOBFormatted} / pc</span>
+          </div>
+          <div class="text-left sm:text-right">
+            <span class="text-xs text-meridian-gold block">Total Proforma FOB Value</span>
+            <span class="font-mono text-3xl font-bold">${calc.totalFOBFormatted}</span>
+          </div>
+        </div>
+      </div>
+
+      document.getElementById('techSheetModal').classList.remove('hidden');
+    }
+
+    function inspectPipelineOrder(orderId) {
+      const order = pipelineOrders.find(o => o.id === orderId);
+      if (!order) return;
+
+      document.getElementById('techSheetContent').innerHTML = `
+        <div class="flex items-center justify-between border-b border-meridian-border pb-4">
+          <div>
+            <span class="font-mono text-xs font-bold text-meridian-terracotta">${order.id} • LIVE MERCHANDISING RECORD</span>
+            <h3 class="font-serif text-2xl font-bold text-meridian-ink mt-1">${order.style}</h3>
+          </div>
+          <span class="px-3 py-1 rounded-full border text-xs font-semibold ${order.statusColor}">${order.status}</span>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs bg-meridian-bg p-4 rounded-2xl border border-meridian-border">
+          <div><span class="text-meridian-muted block">Buyer Brand</span><strong class="text-sm">${order.flag} ${order.company}</strong></div>
+          <div><span class="text-meridian-muted block">Target Season</span><strong class="text-sm">${order.season} Collection</strong></div>
+          <div><span class="text-meridian-muted block">Fabric Specification</span><strong class="font-mono">${order.fabric}</strong></div>
+          <div><span class="text-meridian-muted block">Order Volume &amp; FOB</span><strong class="font-mono">${order.units.toLocaleString()} pcs • ${order.fobDisplay}</strong></div>
+        </div>
+        <div class="text-xs text-meridian-muted leading-relaxed">
+          Assigned Quality Assurance Lead: <strong class="text-meridian-ink">T. Rahman (Senior Textile Technologist)</strong>. All lab-dips and pre-production samples are logged under ISO 9001 &amp; AQL 2.5 export protocols.
+        </div>
+      `;
+      document.getElementById('techSheetModal').classList.remove('hidden');
+    }
+
+    function closeTechSheetModal() {
+      document.getElementById('techSheetModal').classList.add('hidden');
+    }
+
+    // Toast Helper
+    let toastTimeout;
+    function showToast(msg) {
+      const toast = document.getElementById('toastNotification');
+      document.getElementById('toastMessage').textContent = msg;
+      toast.classList.remove('translate-y-24', 'opacity-0');
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toast.classList.add('translate-y-24', 'opacity-0');
+      }, 4000);
+    }
+
+    // Initialize App on Load
+    window.addEventListener('DOMContentLoaded', () => {
+      selectRegion('usa');
+      calculateQuote();
+      renderPipelineTable();
+    });
+  </script>
+</body>
+</html>
